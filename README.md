@@ -1,17 +1,17 @@
 # 🏦 BankApplication
 
-Projet académique de démonstration d'une architecture **microservices** développée en Java avec Spring Boot, conteneurisée avec Docker.
+Academic project demonstrating a **microservices architecture** built with Java Spring Boot and containerized with Docker.
 
 ---
 
-## 🎯 Objectifs pédagogiques
+## 🎯 Learning Objectives
 
-Ce projet a été réalisé dans le but d'apprendre et de manipuler :
+This project was built to learn and practice :
 
-- 🐳 **Docker** — création d'images, gestion de containers, Docker Hub
-- 🔧 **Dockerfile** — multi-stage build, optimisation des layers
-- 📦 **Docker Compose** — orchestration de plusieurs services
-- 🏗️ **Architecture Microservices** — découpage d'une application en services indépendants
+- 🐳 **Docker** — building images, managing containers, Docker Hub
+- 🔧 **Dockerfile** — multi-stage builds, layer optimization
+- 📦 **Docker Compose** — orchestrating multiple services
+- 🏗️ **Microservices Architecture** — splitting an application into independent services
 
 ---
 
@@ -19,9 +19,9 @@ Ce projet a été réalisé dans le but d'apprendre et de manipuler :
 
 ```
 BankApplication/
-├── account/          # Microservice gestion des comptes
-├── cards/            # Microservice gestion des cartes
-├── loans/            # Microservice gestion des prêts
+├── account/          # Account management microservice
+├── cards/            # Card management microservice
+├── loans/            # Loan management microservice
 ├── docker-compose.yml
 └── README.md
 ```
@@ -30,13 +30,13 @@ BankApplication/
 
 | Service | Port | Description |
 |---------|------|-------------|
-| **account** | `8080` | Gestion des comptes bancaires |
-| **cards** | `8090` | Gestion des cartes bancaires |
-| **loans** | `9000` | Gestion des prêts |
+| **account** | `8080` | Bank account management |
+| **cards** | `8090` | Bank card management |
+| **loans** | `9000` | Loan management |
 
 ---
 
-## 🛠️ Technologies
+## 🛠️ Tech Stack
 
 - **Java 17**
 - **Spring Boot**
@@ -46,32 +46,32 @@ BankApplication/
 
 ---
 
-## 🚀 Lancement du projet
+## 🚀 Getting Started
 
-### Prérequis
+### Prerequisites
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installé et démarré
-- [Java 17](https://adoptium.net/) installé
-- [Maven](https://maven.apache.org/) installé
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running
+- [Java 17](https://adoptium.net/) installed
+- [Maven](https://maven.apache.org/) installed
 
-### Lancer tous les microservices
+### Run all microservices
 
 ```bash
-# Cloner le projet
+# Clone the project
 git clone https://github.com/antonin-tacchi/BankApplication.git
 cd BankApplication
 
-# Lancer tous les services
+# Start all services
 docker-compose up --build
 ```
 
-### Lancer un service individuellement
+### Run a single service
 
 ```bash
-# Builder l'image
+# Build the image
 docker build -t account:1.0 ./account
 
-# Lancer le container
+# Run the container
 docker run -p 8080:8080 account:1.0
 ```
 
@@ -79,17 +79,17 @@ docker run -p 8080:8080 account:1.0
 
 ## 🐳 Docker
 
-Chaque microservice dispose de son propre `Dockerfile` multi-stage :
+Each microservice has its own multi-stage `Dockerfile` :
 
 ```dockerfile
-# Étape 1 : Build Maven (les dépendances sont mises en cache)
+# Stage 1 : Maven build (dependencies are cached)
 FROM maven:3.9-eclipse-temurin-17-alpine AS build
 COPY pom.xml .
 RUN mvn dependency:go-offline
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Étape 2 : Image finale légère
+# Stage 2 : Lightweight final image
 FROM openjdk:17.0.1-jdk-slim
 LABEL maintainer=antonintacchi
 COPY --from=build /target/*.jar app.jar
@@ -98,6 +98,6 @@ ENTRYPOINT ["java", "-jar", "/app.jar"]
 
 ---
 
-## 👤 Auteur
+## 👤 Author
 
 **Antonin Tacchi** — [@antonin-tacchi](https://github.com/antonin-tacchi)
