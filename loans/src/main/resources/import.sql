@@ -1,0 +1,4 @@
+INSERT INTO loans (loan_number, customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES (1, 1, DATEADD('DAY', -250, CURRENT_DATE()), 'Home', 200000, 50000, 150000, DATEADD('DAY', -250, CURRENT_DATE()));
+INSERT INTO loans (loan_number, customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES (2, 1, DATEADD('DAY', -376, CURRENT_DATE()), 'Vehicle', 40000, 10000, 30000, DATEADD('DAY', -376, CURRENT_DATE()));
+INSERT INTO loans (loan_number, customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES (3, 1, DATEADD('DAY', -549, CURRENT_DATE()), 'Home', 50000, 10000, 40000, DATEADD('DAY', -549, CURRENT_DATE()));
+INSERT INTO loans (loan_number, customer_id, start_dt, loan_type, total_loan, amount_paid, outstanding_amount, create_dt) VALUES (4, 1, DATEADD('DAY', -122, CURRENT_DATE()), 'Personal', 10000, 3500, 6500, DATEADD('DAY', -122, CURRENT_DATE()));
