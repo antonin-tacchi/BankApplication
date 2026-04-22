@@ -9,7 +9,6 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
         </processorPath>
         <module name="account" />
       </profile>
@@ -19,6 +18,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="loans" />
         <module name="cards" />
+        <module name="configserver" />
       </profile>
     </annotationProcessing>
   </component>
@@ -26,6 +26,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="account" options="-parameters" />
       <module name="cards" options="-parameters" />
+      <module name="configserver" options="-parameters" />
       <module name="loans" options="-parameters" />
     </option>
   </component>
